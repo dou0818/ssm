@@ -18,7 +18,7 @@ public class TagTest extends TagSupport {
         WebApplicationContext wc = WebApplicationContextUtils.getRequiredWebApplicationContext(this.pageContext.getServletContext());//获取spring容器
         UsersService us = (UsersService) wc.getBean("usersServiceImpl");//从spring容器获取bean对象
 
-        System.out.println("dotag");//修改1
+        System.out.println("dotag");//修改2
         try {
             this.pageContext.getOut().println("<a href='d'>aAAabb</a>"+us.selectByPrimaryKey(1).getUsername());
         } catch (IOException e) {
