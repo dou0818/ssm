@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.stock.mapper.UserMapper">
+  <resultMap id="BaseResultMap" type="com.stock.domain.User">
+    <!--@mbg.generated generated on Tue Aug 20 15:25:14 CST 2019.-->
+    <id column="userid" jdbcType="INTEGER" property="userid" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="usersex" jdbcType="VARCHAR" property="usersex" />
+    <result column="userphoto" jdbcType="VARCHAR" property="userphoto" />
+    <result column="userhobby" jdbcType="VARCHAR" property="userhobby" />
+    <result column="useraddress" jdbcType="VARCHAR" property="useraddress" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated generated on Tue Aug 20 15:25:14 CST 2019.-->
+    userid, username, usersex, userphoto, userhobby, useraddress
+  </sql>
+</mapper>
