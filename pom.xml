@@ -51,11 +51,13 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
+
         <!--模板依赖-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
+
         <!--分页插件依赖-->
         <dependency>
             <groupId>com.github.pagehelper</groupId>
@@ -67,11 +69,16 @@
             <artifactId>pagehelper-spring-boot-autoconfigure</artifactId>
             <version>1.2.10</version>
         </dependency>
-
         <dependency>
             <groupId>com.github.pagehelper</groupId>
             <artifactId>pagehelper-spring-boot-starter</artifactId>
             <version>1.2.10</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>pagehelper</artifactId>
+                    <groupId>com.github.pagehelper</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <!-- 通用Mapper插件 -->
@@ -79,6 +86,16 @@
             <groupId>tk.mybatis</groupId>
             <artifactId>mapper-spring-boot-starter</artifactId>
             <version>RELEASE</version>
+        </dependency>
+
+        <!-- redis依赖-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-pool2</artifactId>
         </dependency>
 
         <!-- 热部署插件-->
