@@ -23,6 +23,10 @@ public class MyResponseRestful {
             data.add(o);
         }
     }
+    public MyResponseRestful(String message,HttpStatus httpstatus) {
+        this.httpstatus = httpstatus;
+        this.message = message;
+    }
 
     public List<Object> getData() {
         return data;

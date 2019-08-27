@@ -17,10 +17,10 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(BindException.class)
     @ResponseBody
-    public RestFulResponseBody BindExceptionHandler(HttpServletRequest request,
+    public MyResponseRestful BindExceptionHandler(HttpServletRequest request,
                                        final Exception e, HttpServletResponse response) {
         System.out.println("BindException错误");
-        RestFulResponseBody rs=  new RestFulResponseBody("参数错误", HttpStatus.INTERNAL_SERVER_ERROR);
+        MyResponseRestful rs=  new MyResponseRestful("参数错误", HttpStatus.INTERNAL_SERVER_ERROR);
         return rs;
     }
 }
