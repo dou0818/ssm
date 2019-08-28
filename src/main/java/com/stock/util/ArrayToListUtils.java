@@ -50,14 +50,4 @@ public class ArrayToListUtils {
         }
         return wareList;
     }
-
-    public static void main(String[] args) {
-        int[] a= {1,2,3};
-        int[] b= {11,22,33};
-        int[] c= {111,222,333};
-        for (Map<String, Object> map : s) {
-            int aa = (int) map.get("commodityid");
-            System.out.println("aa = " + aa);
-        }
-    }
 }
