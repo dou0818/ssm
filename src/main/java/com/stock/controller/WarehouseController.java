@@ -34,6 +34,7 @@ public class WarehouseController {
         return restful;
     }
 
+
     @GetMapping(value = "bePutInStorage")
     public MyResponseRestful bePutInStorage(int[] commodityids, int[] merchantids, int[] nums, int[] warehouseids) {
 
