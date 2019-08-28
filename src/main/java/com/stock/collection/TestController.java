@@ -16,7 +16,7 @@ public class TestController {
 
     /***
      *
-     * 添加活动库存属量
+     * 添加活动库存数量
      * @param mapList
      * @return
      */
