@@ -55,7 +55,7 @@ public static List<Map<String, Object>> wareList(int[] commodityids, int[] merch
         int[] a= {1,2,3};
         int[] b= {11,22,33};
         int[] c= {111,222,333};
-     List<Map<String,Object>> s =   ArrayToListUtils.saleList(a,b,c);
+        List<Map<String,Object>> s =   ArrayToListUtils.saleList(a,b,c);
         for (Map<String, Object> map : s) {
             int aa= (int) map.get("commodityid");
             System.out.println("aa = " + aa);
