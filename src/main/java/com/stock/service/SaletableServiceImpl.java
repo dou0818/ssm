@@ -13,12 +13,21 @@ public class SaletableServiceImpl implements SaletableService{
 
     @Resource
     private SaletableMapper saletableMapper;
-
+    /**
+     * 根据用户id和商品id添加活动库存
+     * @param merchanid
+     * @param commodityid
+     * @param num
+     * @return
+     */
     @Override
     public int addActivityNum(int merchanid, int commodityid, int num) {
        return saletableMapper.addActivityNum(merchanid,commodityid,num);
     }
-
+    /**
+     * 查询所有库存信息
+     * @return
+     */
     @Override
     public List<Saletable>selAllSaleNum() {
         return saletableMapper.selectAll();

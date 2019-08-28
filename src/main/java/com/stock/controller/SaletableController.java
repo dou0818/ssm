@@ -23,7 +23,7 @@ public class SaletableController {
      */
     @RequestMapping("promotion")
     public Boolean promotion(List<Map<String,Object>> mapList){
-        List<Saletable> saletableList= saletableService.selAllSaleNum();//查询销售库存数量
+        List<Saletable> saletableList= saletableService.selAllSaleNum();//查询库存信息
         for (Saletable saletable:saletableList) {
             for (Map<String,Object> map:mapList) {
                 if (map.get("commodityid").equals(saletable.getCommodityid()) //判断销售库存数量是否够用来做活动
