@@ -5,6 +5,7 @@ import org.springframework.validation.BindException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,11 +13,11 @@ import javax.servlet.http.HttpServletResponse;
 /***
  * 全局异常处理类
  */
-@ControllerAdvice
+
+@RestControllerAdvice
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(BindException.class)
-    @ResponseBody
     public MyResponseRestful BindExceptionHandler(HttpServletRequest request,
                                        final Exception e, HttpServletResponse response) {
         System.out.println("BindException错误");
