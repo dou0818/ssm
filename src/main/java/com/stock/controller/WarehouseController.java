@@ -23,13 +23,5 @@ public class WarehouseController {
         MyResponseRestful restful = new MyResponseRestful(HttpStatus.OK,"退货入库成功");
         return restful;
     }
-
-    @RequestMapping("/s")
-    public String a(int[] aid, int[] bid) {
-        System.out.println("aid +\"\\t\"+bid = " + aid + "\t" + bid);
-        for (int i : aid) {
-            System.out.println("i = " + i);
-        }
-        return "a";
-    }
+    
 }
