@@ -14,4 +14,10 @@
     <!--@mbg.generated generated on Tue Aug 27 16:00:48 CST 2019.-->
     id, warehouseid, commodityid, merchantid, num, `time`
   </sql>
+    <insert id="insertInWareHouse">
+      insert into warehouse.inwarehouse (warehouseid,commodityid,num,time) values 
+      <foreach collection="list" index="map" separator=",">
+        ()
+      </foreach>
+    </insert>
 </mapper>
