@@ -20,4 +20,20 @@
     update saletable set activitynum=activitynum+#{param3},salenum=salenum-#{param3}
     where  merchantid=#{param1} and commodityid=#{param2}
   </update>
+
+  <!--  付款成功后，修改可销售库存-，锁定库存-，已销售库存+-->
+  <update id="payment" parameterType="java.util.List">
+    <!-- 接收list参数，循环着组装sql语句，注意for循环的写法
+            separator=";" 代表着每次循环完，在sql后面放一个分号
+            item="params" 循环List的每条的结果集
+            collection="list" list 即为 map传过来的参数key -->
+    <foreach collection="list" separator=";" item="params">
+      update saletable set
+      salenum=salenum-#{params.num},
+      locknum=locknum-#{params.num},
+      saleednum=saleednum+#{params.num}
+      WHERE commodityid=#{params.commodityid} and merchantid=#{params.merchantid}
+    </foreach>
+  </update>
+
 </mapper>
