@@ -35,6 +35,7 @@ public class WarehouseController {
      * @param warehouseids
      * @return
      */
+    @RequestMapping(value = "salesReturn")
     public MyResponseRestful salesReturn(int[] commodityids, int[] merchantids, int[] nums, int[] warehouseids) {
         List<Map<String, Object>> wareList = ArrayToListUtils.wareList(commodityids, merchantids, nums, warehouseids);
         boolean flag = warehouseService.salesReturn(wareList);
