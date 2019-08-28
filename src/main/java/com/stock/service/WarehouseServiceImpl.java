@@ -1,5 +1,6 @@
 package com.stock.service;
 
+import com.stock.domain.Warehouse;
 import com.stock.mapper.WarehouseMapper;
 import com.stock.util.GetDate;
 import org.springframework.stereotype.Service;
@@ -42,4 +43,17 @@ public class WarehouseServiceImpl implements WarehouseService {
         inwarehouseService.insertInWareHouse(list, GetDate.getDate());
         return warehouseMapper.updateWareHouse(list);
     }
+
+    /**
+     * 根据商品id和商家id修改发布与未发布库存数量
+     * @param list
+     * @return
+     */
+    @Override
+    public int updateInventorynumByWarehouse(List<Map<String, Object>> list) {
+
+        return warehouseMapper.updateInventorynumByWarehouse(list);
+    }
+
+
 }

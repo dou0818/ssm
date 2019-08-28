@@ -23,4 +23,13 @@ public interface WarehouseMapper extends Mapper<Warehouse> {
      * @return
      */
     int updateWareHouse(@Param("list") List<Map<String, Object>> list);
+
+    /**
+     * 根据商品id和商家id修改发布与未发布库存数量
+     * @param list
+     * @return
+     */
+    public int updateInventorynumByWarehouse(List<Map<String,Object>> list);
+
+
 }
