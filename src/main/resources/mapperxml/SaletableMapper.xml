@@ -29,7 +29,6 @@
             collection="list" list 即为 map传过来的参数key -->
     <foreach collection="list" separator=";" item="params">
       update saletable set
-      salenum=salenum-#{params.num},
       locknum=locknum-#{params.num},
       saleednum=saleednum+#{params.num}
       WHERE commodityid=#{params.commodityid} and merchantid=#{params.merchantid}
