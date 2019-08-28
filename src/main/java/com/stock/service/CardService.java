@@ -1,6 +1,8 @@
 package com.stock.service;
 
-public interface CardService{
+import java.util.List;
+import java.util.Map;
 
+public interface CardService{
 
 }
