@@ -63,4 +63,26 @@ public class SaletableController {
 
         return "";
     }
+
+    /**
+     * 预售功能
+     * 批量修改预售数量
+     * @return
+     */
+    @RequestMapping(value = "/addSaleNum" )
+    public String addSaleNum(){
+        Map<String,Object> map=new HashMap<>();
+        map.put("presellnum",90);
+        map.put("commodityid",1);
+        map.put("merchantid",1);
+        Map<String,Object> map2=new HashMap<>();
+        map2.put("presellnum",88);
+        map2.put("commodityid",2);
+        map2.put("merchantid",1);
+        List<Map<String,Object>> list=new ArrayList<>();
+        list.add(map);
+        list.add(map2);
+        saletableService.addSaleNum(list); //修改预售数量方法
+        return  "hhh";
+    }
 }

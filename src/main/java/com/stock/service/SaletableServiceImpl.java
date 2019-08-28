@@ -35,4 +35,15 @@ public class SaletableServiceImpl implements SaletableService{
         return saletableMapper.payment(paymentid);
     }
 
+
+    /**
+     * 修改预售数量
+     * @param list
+     * @return
+     */
+    @Override
+    public int addSaleNum(List<Map<String, Object>> list) {
+        return saletableMapper.addSaleNum(list);
+    }
+
 }

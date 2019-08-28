@@ -16,4 +16,11 @@ public interface SaletableMapper extends Mapper<Saletable> {
      * @return
      */
     int payment(List<Map<String,Object>> paymentid);
+
+    /**
+     * 修改预售数量
+     * @param list
+     * @return
+     */
+    public int addSaleNum(List<Map<String,Object>> list);
 }
