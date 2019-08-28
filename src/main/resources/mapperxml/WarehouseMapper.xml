@@ -18,13 +18,14 @@
     id, commodityid, warehouseid, unissue_inventorynum, issue_inventorynum, unable_inventorynum, 
     lock_inventorynum, went_inventorynum, merchantid
   </sql>
-  <update id="updateWareHouse" parameterType="list">
-    <foreach collection="list" index="index" open="begin" close=";end;" separator=";">
-      update warehouse.warehouse set unissue_inventorynum=unissue_inventorynum+#{}
+	<update id="salesReturn">
+
+    </update>
+
+	<update id="updateWareHouse">
+    <foreach collection="list" item="i" separator=";">
+      update warehouse.warehouse set unissue_inventorynum=unissue_inventorynum+#{i.num}
       where
-      commodityid=#{} and warehouseid=#{} and merchantid=#{}
-
+      commodityid=#{i.commodityid} and warehouseid=#{i.warehouseid} and merchantid=#{i.merchantid}
     </foreach>
-  </update>
-
-</mapper>
+  </update></mapper>

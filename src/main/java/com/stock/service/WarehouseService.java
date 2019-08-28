@@ -10,5 +10,11 @@ public interface WarehouseService{
      * @return
      */
     int updateWareHouse(List<Map<String,Object>> list);
-
+	
+	/**
+     * 用户退货后进行的操作
+     * @param salesList
+     * @return boolean
+     */
+    boolean salesReturn(List<Map<String,Object>> salesList);
 }
