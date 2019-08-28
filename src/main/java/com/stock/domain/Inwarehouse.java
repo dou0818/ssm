@@ -1,7 +1,8 @@
 package com.stock.domain;
 
-import java.util.Date;
+
 import javax.persistence.*;
+import java.util.Date;
 
 @Table(name = "inwarehouse")
 public class Inwarehouse {

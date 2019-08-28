@@ -60,6 +60,18 @@
         </dependency>
 
         <!-- 分页插件 -->
+=======
+        <!--模板依赖-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+
+
+
+
+        <!--分页插件依赖-->
+>>>>>>> d8b3d6e18a792c05c5327a36014a37f491140051
         <dependency>
             <groupId>com.github.pagehelper</groupId>
             <artifactId>pagehelper</artifactId>
