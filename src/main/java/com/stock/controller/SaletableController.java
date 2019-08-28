@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -34,5 +36,31 @@ public class SaletableController {
             }
         }
         return false;
+    }
+
+    /**
+     * 付款成功后，修改可销售库存-，锁定库存-，已销售库存+
+     * @param
+     * @return
+     */
+    @RequestMapping(value = "/payment")
+    public String payment() {
+        List<Map<String, Object>> paymentid = new ArrayList<>();
+
+        Map<String, Object> map = new HashMap<>();
+        map.put("commodityid", "1");
+        map.put("merchantid", "1");
+        map.put("num", "2");
+        paymentid.add(map);
+
+        Map<String,Object> map1=new HashMap<>();
+        map1.put("commodityid", "2");
+        map1.put("merchantid", "1");
+        map1.put("num", "2");
+        paymentid.add(map1);
+
+        int a = saletableService.payment(paymentid);
+
+        return "";
     }
 }
