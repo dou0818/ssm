@@ -23,5 +23,5 @@ public class WarehouseController {
         MyResponseRestful restful = new MyResponseRestful(HttpStatus.OK,"退货入库成功");
         return restful;
     }
-    
+
 }
