@@ -29,11 +29,42 @@
             collection="list" list 即为 map传过来的参数key -->
     <foreach collection="list" separator=";" item="params">
       update saletable set
-      salenum=salenum-#{params.num},
       locknum=locknum-#{params.num},
       saleednum=saleednum+#{params.num}
       WHERE commodityid=#{params.commodityid} and merchantid=#{params.merchantid}
     </foreach>
+  </update>
+
+  <!--  修改预售数量 -->
+  <update id="addSaleNum" parameterType="java.util.List">
+    <!-- 接收list参数，循环着组装sql语句，注意for循环的写法
+                separator=";" 代表着每次循环完，在sql后面放一个分号
+                item="params" 循环List的每条的结果集
+                collection="list" list 即为 map传过来的参数key -->
+    <foreach collection ="list" item="item" index= "index" separator=";">
+      update saletable
+      <set>
+        presellnum = #{item.presellnum}
+      </set>
+      <where>
+        commodityid =#{item.commodityid} and
+        merchantid=#{item.merchantid}
+      </where>
+    </foreach>
+
+  </update>
+
+  <update id="cancelOrder" parameterType="java.util.List">
+
+   <foreach collection="list" item="v" index="index" separator=";">
+       update saletable
+      <set>
+              salenum=salenum+#{v.num},
+              locknum=locknum-#{v.num}
+
+      </set>
+       where commodityid=#{v.commodityid} and merchantid=#{v.merchantid}
+   </foreach>
   </update>
 
 </mapper>

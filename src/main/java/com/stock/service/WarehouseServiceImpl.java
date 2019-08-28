@@ -4,14 +4,9 @@ import com.stock.domain.Warehouse;
 import com.stock.mapper.WarehouseMapper;
 import com.stock.util.GetDate;
 import org.springframework.stereotype.Service;
-
-import javax.annotation.Resource;
-import java.util.List;
-import java.util.Map;
-import com.stock.mapper.WarehouseMapper;
-import com.stock.service.WarehouseService;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.Resource;
 import java.util.List;
 import java.util.Map;
 
@@ -31,10 +26,7 @@ public class WarehouseServiceImpl implements WarehouseService {
      */
     @Override
     public boolean salesReturn(List<Map<String, Object>> salesList) {
-        for (Map<String, Object> salesMap : salesList) {
-
-        }
-        return false;
+        return warehouseMapper.salesReturn(salesList);
     }
 
 	@Override

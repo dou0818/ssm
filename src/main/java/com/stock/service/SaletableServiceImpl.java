@@ -5,6 +5,8 @@ import com.stock.mapper.SaletableMapper;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import com.stock.mapper.SaletableMapper;
+import com.stock.service.SaletableService;
 import java.util.List;
 import java.util.Map;
 
@@ -13,12 +15,21 @@ public class SaletableServiceImpl implements SaletableService{
 
     @Resource
     private SaletableMapper saletableMapper;
-
+    /**
+     * 根据用户id和商品id添加活动库存
+     * @param merchanid
+     * @param commodityid
+     * @param num
+     * @return
+     */
     @Override
     public int addActivityNum(int merchanid, int commodityid, int num) {
        return saletableMapper.addActivityNum(merchanid,commodityid,num);
     }
-
+    /**
+     * 查询所有库存信息
+     * @return
+     */
     @Override
     public List<Saletable>selAllSaleNum() {
         return saletableMapper.selectAll();
@@ -35,4 +46,20 @@ public class SaletableServiceImpl implements SaletableService{
         return saletableMapper.payment(paymentid);
     }
 
-}
+
+    /**
+     * 修改预售数量
+     * @param list
+     * @return
+     */
+    @Override
+    public int addSaleNum(List<Map<String, Object>> list) {
+        return saletableMapper.addSaleNum(list);
+    }
+
+ @Override
+    public int cancelOrder(List<Map<String, Object>> orderid) {
+        return saletableMapper.cancelOrder(orderid);
+    }
+
+}}
