@@ -16,4 +16,8 @@
     <!--@mbg.generated generated on Tue Aug 27 16:01:01 CST 2019.-->
     id, commodityid, salenum, locknum, saleednum, activitynum, presellnum, merchantid
   </sql>
+  <update id="addActivityNum">
+    update saletable set activitynum=activitynum+#{param3},salenum=salenum-#{param3}
+    where  merchantid=#{param1} and commodityid=#{param2}
+  </update>
 </mapper>
