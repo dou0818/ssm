@@ -52,17 +52,10 @@ public class ArrayToListUtils {
     }
 
     public static void main(String[] args) {
-<<<<<<< HEAD
         int[] a= {1,2,3};
         int[] b= {11,22,33};
         int[] c= {111,222,333};
         List<Map<String,Object>> s =   ArrayToListUtils.saleList(a,b,c);
-=======
-        int[] a = {1, 2, 3};
-        int[] b = {11, 22, 33};
-        int[] c = {111, 222, 333};
-        List<Map<String, Object>> s = ArrayToListUtils.saleList(a, b, c);
->>>>>>> d3098527fbebe8fd3aff308ca2c005ae69bd1b04
         for (Map<String, Object> map : s) {
             int aa = (int) map.get("commodityid");
             System.out.println("aa = " + aa);
