@@ -82,6 +82,8 @@ public class SaletableController {
         return new MyResponseRestful(HttpStatus.OK,"取消订单",a);
     }
 
+
+
     /**
      * 预售功能
      * @param commodityids
