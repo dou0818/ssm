@@ -1,24 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.stock.mapper.WarehouseMapper">
-    <resultMap id="BaseResultMap" type="com.stock.domain.Warehouse">
-        <!--@mbg.generated generated on Tue Aug 27 16:01:10 CST 2019.-->
-        <id column="id" jdbcType="INTEGER" property="id"/>
-        <result column="commodityid" jdbcType="INTEGER" property="commodityid"/>
-        <result column="warehouseid" jdbcType="INTEGER" property="warehouseid"/>
-        <result column="unissue_inventorynum" jdbcType="INTEGER" property="unissueInventorynum"/>
-        <result column="issue_inventorynum" jdbcType="INTEGER" property="issueInventorynum"/>
-        <result column="unable_inventorynum" jdbcType="INTEGER" property="unableInventorynum"/>
-        <result column="lock_inventorynum" jdbcType="INTEGER" property="lockInventorynum"/>
-        <result column="went_inventorynum" jdbcType="INTEGER" property="wentInventorynum"/>
-        <result column="merchantid" jdbcType="INTEGER" property="merchantid"/>
-    </resultMap>
-    <sql id="Base_Column_List">
-        <!--@mbg.generated generated on Tue Aug 27 16:01:10 CST 2019.-->
-        id, commodityid, warehouseid, unissue_inventorynum, issue_inventorynum, unable_inventorynum,
-        lock_inventorynum, went_inventorynum, merchantid
-    </sql>
-    <update id="salesReturn">
+	<update id="salesReturn">
         <foreach collection="list" item="i" separator=";">
             update warehouse set
             went_inventorynum=went_inventorynum-#{i.num},lock_inventorynum=lock_inventorynum+#{i.num}
@@ -26,7 +9,6 @@
             commodityid=#{i.commodityid} and warehouseid=#{i.warehouseid} and merchantid=#{i.merchantid}
         </foreach>
     </update>
-
     <update id="updateWareHouse">
         <foreach collection="list" item="i" separator=";">
             update warehouse.warehouse set unissue_inventorynum=unissue_inventorynum+#{i.num}
@@ -34,9 +16,20 @@
             commodityid=#{i.commodityid} and warehouseid=#{i.warehouseid} and merchantid=#{i.merchantid}
         </foreach>
     </update>
+	<update id="updateInventorynumByWarehouse" parameterType="list">
+        <foreach separator=";" index="index" item="i" collection="list">
+            update warehouse
+            <set>
+                unissue_inventorynum=(unissue_inventorynum-#{i.num,jdbcType=INTEGER}),issue_inventorynum=(issue_inventorynum+#{i.num,jdbcType=INTEGER})
+            </set>
+            where commodityid=#{i.commodityid,jdbcType=INTEGER} and merchantid=#{i.merchantid,jdbcType=INTEGER} and warehouseid=#{i.warehouseid}
+        </foreach>
+    </update>
 
-
-    <select id="showAll" resultType="map">
+    <select id="stockSearch" resultType="map">
+        select commodityid,merchantid,sum(unissue_inventorynum) unissue_inventorynum
+        from warehouse.warehouse
+        group by commodityid,merchantid
+    </select>    <select id="showAll" resultType="map">
         SELECT id,commodityid,warehouseid,unable_inventorynum,issue_inventorynum,unable_inventorynum,lock_inventorynum,went_inventorynum,merchantid from warehouse;
-    </select>
-</mapper>
+    </select></mapper>

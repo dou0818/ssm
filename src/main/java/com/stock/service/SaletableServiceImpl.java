@@ -5,6 +5,8 @@ import com.stock.mapper.SaletableMapper;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import com.stock.mapper.SaletableMapper;
+import com.stock.service.SaletableService;
 import java.util.List;
 import java.util.Map;
 
@@ -53,6 +55,11 @@ public class SaletableServiceImpl implements SaletableService{
     @Override
     public int addSaleNum(List<Map<String, Object>> list) {
         return saletableMapper.addSaleNum(list);
+    }
+
+ @Override
+    public int cancelOrder(List<Map<String, Object>> orderid) {
+        return saletableMapper.cancelOrder(orderid);
     }
 
 }

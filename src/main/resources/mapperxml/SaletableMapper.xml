@@ -54,4 +54,17 @@
 
   </update>
 
+  <update id="cancelOrder" parameterType="java.util.List">
+
+   <foreach collection="list" item="v" index="index" separator=";">
+       update saletable
+      <set>
+              salenum=salenum+#{v.num},
+              locknum=locknum-#{v.num}
+
+      </set>
+       where commodityid=#{v.commodityid} and merchantid=#{v.merchantid}
+   </foreach>
+  </update>
+
 </mapper>

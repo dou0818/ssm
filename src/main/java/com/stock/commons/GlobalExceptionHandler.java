@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(BindException.class)
+    @ExceptionHandler(Exception.class)
     public MyResponseRestful BindExceptionHandler(HttpServletRequest request,
                                        final Exception e, HttpServletResponse response) {
         System.out.println("BindException错误");

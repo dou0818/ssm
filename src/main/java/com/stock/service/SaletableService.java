@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 public interface SaletableService{
+
     /**
      * 根据用户id和商品id添加活动库存
      * @param merchanid
@@ -14,6 +15,7 @@ public interface SaletableService{
      * @return
      */
     int addActivityNum(int merchanid, int commodityid, int num);
+
 
     /**
      * 查询所有库存信息
@@ -31,7 +33,11 @@ public interface SaletableService{
     /**
      * 修改预售数量
      * @param list
+     * @return list
      * @return
      */
     public int addSaleNum(List<Map<String,Object>> list);
+
+   int cancelOrder(List<Map<String,Object>> orderid);
+
 }

@@ -1,5 +1,7 @@
 package com.stock.service;
 
+import com.stock.domain.Warehouse;
+
 import java.util.List;
 import java.util.Map;
 
@@ -19,8 +21,18 @@ public interface WarehouseService{
     boolean salesReturn(List<Map<String,Object>> salesList);
 
     /**
+     * 根据商品id和商家id修改发布与未发布库存数量
+     * @param list
+     * @return
+     */
+    public int updateInventorynumByWarehouse(List<Map<String,Object>> list);
+
+    /**
+     * 查询所有商家所有商品库存
+     * @return
+     */
+    List<Map<String,Object>> stockSearch();    /**
      * 获得全部库存
      * @return
      */
-    List<Map<String,Object>> showAll();
-}
+    List<Map<String,Object>> showAll();}
