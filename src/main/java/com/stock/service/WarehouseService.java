@@ -17,4 +17,10 @@ public interface WarehouseService{
      * @return boolean
      */
     boolean salesReturn(List<Map<String,Object>> salesList);
+
+    /**
+     * 获得全部库存
+     * @return
+     */
+    List<Map<String,Object>> showAll();
 }

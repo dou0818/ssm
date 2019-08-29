@@ -34,4 +34,9 @@
             commodityid=#{i.commodityid} and warehouseid=#{i.warehouseid} and merchantid=#{i.merchantid}
         </foreach>
     </update>
+
+
+    <select id="showAll" resultType="map">
+        SELECT id,commodityid,warehouseid,unable_inventorynum,issue_inventorynum,unable_inventorynum,lock_inventorynum,went_inventorynum,merchantid from warehouse;
+    </select>
 </mapper>

@@ -28,7 +28,17 @@ public class WarehouseServiceImpl implements WarehouseService {
         return warehouseMapper.salesReturn(salesList);
     }
 
-	@Override
+    /**
+     * 获得全部库存
+     *
+     * @return
+     */
+    @Override
+    public List<Map<String, Object>> showAll() {
+        return warehouseMapper.showAll();
+    }
+
+    @Override
     @Transactional
     public int updateWareHouse(List<Map<String, Object>> list) {
         inwarehouseService.insertInWareHouse(list, GetDate.getDate());

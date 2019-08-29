@@ -23,4 +23,10 @@ public interface WarehouseMapper extends Mapper<Warehouse> {
      * @return
      */
     int updateWareHouse(@Param("list") List<Map<String, Object>> list);
+
+    /**
+     * 获得全部库存
+     * @return
+     */
+    List<Map<String,Object>> showAll();
 }

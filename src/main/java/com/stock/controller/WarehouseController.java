@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Map;
 
@@ -42,4 +43,19 @@ public class WarehouseController {
         int a = warehouseService.updateWareHouse(list);
         return null;
     }
+
+    /**
+     * 获得全部库存
+     * @return
+     */
+    @RequestMapping(value = "showall")
+    public List showAll(HttpServletRequest request){
+        List<Map<String, Object>> list = warehouseService.showAll();
+        request.setAttribute("list",list);
+        for (Map<String,Object> map:list){
+            System.out.println(map);
+        }
+        return list;
+    }
+
 }
