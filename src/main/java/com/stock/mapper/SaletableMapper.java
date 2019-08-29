@@ -8,6 +8,13 @@ import java.util.Map;
 
 public interface SaletableMapper extends Mapper<Saletable> {
 
+    /**
+     * 根据用户id和商品id添加活动库存
+     * @param merchanid
+     * @param commodityid
+     * @param num
+     * @return
+     */
     int addActivityNum(int merchanid, int commodityid, int num);
 
 
@@ -25,5 +32,12 @@ public interface SaletableMapper extends Mapper<Saletable> {
      */
     public int addSaleNum(List<Map<String,Object>> list);
 
-     int cancelOrder(List<Map<String,Object>> orderid);
+    /**
+     * 取消订单
+     * @param orderid
+     * @return
+     */
+    int cancelOrder(List<Map<String,Object>> orderid);
+
+    List<Map<String, Object>> selSaleTableByMerchantId(int merchantid);
 }

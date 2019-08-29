@@ -73,9 +73,9 @@ public class WarehouseController {
 
         for (Map<String,Object> w : list) {
             Outwarehouse outwarehouse=new Outwarehouse();
-            outwarehouse.setCommodityid((int)w.get("commodityids"));
-            outwarehouse.setMerchantid((int)w.get("merchantids"));
-            outwarehouse.setWarehouseid((int)w.get("warehouseids"));
+            outwarehouse.setCommodityid((int)w.get("commodityid"));
+            outwarehouse.setMerchantid((int)w.get("merchantid"));
+            outwarehouse.setWarehouseid((int)w.get("warehouseid"));
             outwarehouse.setNum((int) w.get("num"));
             outwarehouse.setTime(new Date());
             outwarehousesList.add(outwarehouse);

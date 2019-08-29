@@ -66,5 +66,7 @@
        where commodityid=#{v.commodityid} and merchantid=#{v.merchantid}
    </foreach>
   </update>
-
+  <select id="selSaleTableByMerchantId" parameterType="int" resultType="map">
+    select commodityid, salenum, merchantid from warehouse.saletable where merchantid=#{merchantid}
+  </select>
 </mapper>

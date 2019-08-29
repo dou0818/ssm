@@ -40,4 +40,5 @@ public interface SaletableService{
 
    int cancelOrder(List<Map<String,Object>> orderid);
 
+    List<Map<String, Object>> selSaleTableByMerchantId(int merchantid);
 }

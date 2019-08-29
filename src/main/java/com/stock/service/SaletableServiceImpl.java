@@ -5,15 +5,13 @@ import com.stock.mapper.SaletableMapper;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import com.stock.mapper.SaletableMapper;
-import com.stock.service.SaletableService;
 import java.util.List;
 import java.util.Map;
 
 @Service
 public class SaletableServiceImpl implements SaletableService{
 
-    @Resource
+    @Resource(name = "saletableMapper")
     private SaletableMapper saletableMapper;
     /**
      * 根据用户id和商品id添加活动库存
@@ -46,7 +44,6 @@ public class SaletableServiceImpl implements SaletableService{
         return saletableMapper.payment(paymentid);
     }
 
-
     /**
      * 修改预售数量
      * @param list
@@ -57,9 +54,20 @@ public class SaletableServiceImpl implements SaletableService{
         return saletableMapper.addSaleNum(list);
     }
 
- @Override
+    /**
+     * 取消订单
+     * @param orderid
+     * @return
+     */
+    @Override
     public int cancelOrder(List<Map<String, Object>> orderid) {
         return saletableMapper.cancelOrder(orderid);
     }
+
+    @Override
+    public List<Map<String, Object>> selSaleTableByMerchantId(int merchantid) {
+        return saletableMapper.selSaleTableByMerchantId(merchantid);
+    }
+
 
 }

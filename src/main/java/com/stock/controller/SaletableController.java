@@ -1,33 +1,44 @@
 package com.stock.controller;
 
+import com.github.pagehelper.PageHelper;
+import com.stock.commons.MyResponseRestful;
+import com.stock.commons.Page;
 import com.stock.domain.Saletable;
 import com.stock.service.SaletableService;
+import com.stock.util.ArrayToListUtils;
+
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 
 @RestController
 public class SaletableController {
-
+    @Resource
+    Page page;
     @Resource(name = "saletableServiceImpl")
     SaletableService saletableService;
+    @RequestMapping("selSaleTable")
+    public List<Map<String,Object>> selSaleTableByMerchantId(int merchantid,int pageNum){
+        PageHelper.startPage(pageNum,page.getPagesize());
+        List<Map<String,Object>> saletables= saletableService.selSaleTableByMerchantId(merchantid);
+        return saletables;
+    }
 
     /***
      *
      * 添加活动库存数量
-     * @param mapList
+     * @param commodityids,merchantids,nums
      * @return
      */
+
     @RequestMapping("promotion")
-    public Boolean promotion(List<Map<String, Object>> mapList) {
+    public Boolean promotion(int[] commodityids, int[] merchantids, int[] nums) {
+        List<Map<String, Object>>mapList= ArrayToListUtils.saleList(commodityids,merchantids,nums);
         List<Saletable> saletableList = saletableService.selAllSaleNum();//查询库存信息
         for (Saletable saletable : saletableList) {
             for (Map<String, Object> map : mapList) {
@@ -44,76 +55,46 @@ public class SaletableController {
     }
 
     /**
-     * 付款成功后，修改可销售库存-，锁定库存-，已销售库存+
-     *
-     * @param
+     * 付款成功后，锁定库存-，已销售库存+
+     * @param commodityids
+     * @param merchantids
+     * @param nums
      * @return
      */
     @RequestMapping(value = "/payment")
-    public String payment() {
-        List<Map<String, Object>> paymentid = new ArrayList<>();
-
-        Map<String, Object> map = new HashMap<>();
-        map.put("commodityid", "1");
-        map.put("merchantid", "1");
-        map.put("num", "2");
-        paymentid.add(map);
-
-        Map<String, Object> map1 = new HashMap<>();
-        map1.put("commodityid", "2");
-        map1.put("merchantid", "1");
-        map1.put("num", "2");
-        paymentid.add(map1);
-
-        int a = saletableService.payment(paymentid);
-
-        return "";
+    public MyResponseRestful payment(int[] commodityids, int[] merchantids, int[] nums) {
+        List<Map<String, Object>> list = ArrayToListUtils.saleList(commodityids,merchantids,nums);
+        int a = saletableService.payment(list);
+        return new MyResponseRestful(HttpStatus.OK,"付款成功",a);
     }
 
-
+    /**
+     * 取消订单
+     * @param commodityids
+     * @param merchantids
+     * @param nums
+     * @return
+     */
     @RequestMapping(value = "/cancelOrder")
-    public String cancelOrder(HttpServletRequest request) {
-        Map<String, Object> map1 = new HashMap<>();
-        map1.put("num", 1);
-        map1.put("commodityid", 1);
-        map1.put("merchantid", 1);
-
-        Map<String, Object> map2 = new HashMap<>();
-        map2.put("num", 2);
-        map2.put("commodityid", 2);
-        map2.put("merchantid", 1);
-
-        List<Map<String, Object>> list = new ArrayList<>();
-        list.add(map1);
-        list.add(map2);
-
-
-        saletableService.cancelOrder(list);
-
-        System.out.println("取消订单成功");
-        return "";
+    public MyResponseRestful cancelOrder(int[] commodityids, int[] merchantids, int[] nums) {
+        List<Map<String, Object>> list = ArrayToListUtils.saleList(commodityids,merchantids,nums);
+        int a=saletableService.cancelOrder(list);
+        return new MyResponseRestful(HttpStatus.OK,"取消订单",a);
     }
 
     /**
      * 预售功能
-     * 批量修改预售数量
-     *
+     * @param commodityids
+     * @param merchantids
+     * @param nums
      * @return
      */
     @RequestMapping(value = "/addSaleNum")
-    public String addSaleNum() {
-        Map<String, Object> map = new HashMap<>();
-        map.put("presellnum", 90);
-        map.put("commodityid", 1);
-        map.put("merchantid", 1);
-        Map<String, Object> map2 = new HashMap<>();
-        map2.put("presellnum", 88);
-        map2.put("commodityid", 2);
-        map2.put("merchantid", 1);
-        List<Map<String, Object>> list = new ArrayList<>();
-        list.add(map);
-        list.add(map2);
-        saletableService.addSaleNum(list); //修改预售数量方法
-        return "hhh";
+    public MyResponseRestful addSaleNum(int[] commodityids, int[] merchantids, int[] nums) {
+        List<Map<String, Object>> list = ArrayToListUtils.saleList(commodityids,merchantids,nums);
+        int a=saletableService.addSaleNum(list); //修改预售数量方法
+        return new MyResponseRestful(HttpStatus.OK,"设置预售成功",a);
     }
+
+
 }
