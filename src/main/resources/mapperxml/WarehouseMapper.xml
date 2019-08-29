@@ -24,6 +24,11 @@
             </set>
             where commodityid=#{i.commodityid,jdbcType=INTEGER} and merchantid=#{i.merchantid,jdbcType=INTEGER} and warehouseid=#{i.warehouseid}
         </foreach>
-
     </update>
+
+    <select id="stockSearch" resultType="map">
+        select commodityid,merchantid,sum(unissue_inventorynum) unissue_inventorynum
+        from warehouse.warehouse
+        group by commodityid,merchantid
+    </select>
 	</mapper>

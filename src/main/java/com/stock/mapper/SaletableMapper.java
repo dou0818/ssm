@@ -26,4 +26,4 @@ public interface SaletableMapper extends Mapper<Saletable> {
     public int addSaleNum(List<Map<String,Object>> list);
 
      int cancelOrder(List<Map<String,Object>> orderid);
-}}
+}

@@ -31,5 +31,11 @@ public interface WarehouseMapper extends Mapper<Warehouse> {
      */
     public int updateInventorynumByWarehouse(List<Map<String,Object>> list);
 
+    /**
+     * 查询所有商家所有商品库存
+     * @return
+     */
+    List<Map<String,Object>> stockSearch();
+
 
 }

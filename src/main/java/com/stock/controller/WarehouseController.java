@@ -43,7 +43,14 @@ public class WarehouseController {
         return restful;
     }
 
-
+    /**
+     *进货入库，未发布库存增加
+     * @param commodityids
+     * @param merchantids
+     * @param nums
+     * @param warehouseids
+     * @return
+     */
     @GetMapping(value = "bePutInStorage")
     public MyResponseRestful bePutInStorage(int[] commodityids, int[] merchantids, int[] nums, int[] warehouseids) {
 
@@ -76,4 +83,11 @@ public class WarehouseController {
         outwarehouseService.insertOutwarehouseByList(outwarehousesList);
         return new MyResponseRestful("操作成功", HttpStatus.OK);
     }
+
+    @RequestMapping(value = "stockSearch")
+    public MyResponseRestful stockSearch(){
+        List<Map<String,Object>> list=warehouseService.stockSearch();
+        return new MyResponseRestful(HttpStatus.OK,"查询成功", list);
+    }
+
 }

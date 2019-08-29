@@ -47,5 +47,10 @@ public class WarehouseServiceImpl implements WarehouseService {
         return warehouseMapper.updateInventorynumByWarehouse(list);
     }
 
+    @Override
+    public List<Map<String, Object>> stockSearch() {
+        return warehouseMapper.stockSearch();
+    }
+
 
 }
