@@ -14,8 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.Date;import javax.servlet.http.HttpServletRequest;import java.util.List;
 import java.util.Map;
 
 
@@ -58,8 +57,7 @@ public class WarehouseController {
         int a = warehouseService.updateWareHouse(list);
         return new MyResponseRestful("操作成功", HttpStatus.OK);
     }
-
-    /**
+/**
      * 将仓库层的未发布库存部分库存添加到发布库存,在发布库存表里添加下相应的数据
      * @return
      */
@@ -88,6 +86,16 @@ public class WarehouseController {
     public MyResponseRestful stockSearch(){
         List<Map<String,Object>> list=warehouseService.stockSearch();
         return new MyResponseRestful(HttpStatus.OK,"查询成功", list);
-    }
-
-}
+    }/**
+     * 获得全部库存
+     * @return
+     */
+    @RequestMapping(value = "showall")
+    public List showAll(HttpServletRequest request){
+        List<Map<String, Object>> list = warehouseService.showAll();
+        request.setAttribute("list",list);
+        for (Map<String,Object> map:list){
+            System.out.println(map);
+        }
+        return list;
+    }}

@@ -30,5 +30,6 @@
         select commodityid,merchantid,sum(unissue_inventorynum) unissue_inventorynum
         from warehouse.warehouse
         group by commodityid,merchantid
-    </select>
-	</mapper>
+    </select>    <select id="showAll" resultType="map">
+        SELECT id,commodityid,warehouseid,unable_inventorynum,issue_inventorynum,unable_inventorynum,lock_inventorynum,went_inventorynum,merchantid from warehouse;
+    </select></mapper>
