@@ -57,8 +57,12 @@ public class WarehouseController {
         int a = warehouseService.updateWareHouse(list);
         return new MyResponseRestful("操作成功", HttpStatus.OK);
     }
-/**
+    /**
      * 将仓库层的未发布库存部分库存添加到发布库存,在发布库存表里添加下相应的数据
+     * @param commodityids
+     * @param merchantids
+     * @param nums
+     * @param warehouseids
      * @return
      */
     @Transactional()// 设置事务
