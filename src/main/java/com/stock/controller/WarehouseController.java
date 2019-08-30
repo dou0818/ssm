@@ -85,17 +85,7 @@ public class WarehouseController {
     @RequestMapping(value = "stockSearch")
     public MyResponseRestful stockSearch(){
         List<Map<String,Object>> list=warehouseService.stockSearch();
-        return new MyResponseRestful(HttpStatus.OK,"查询成功", list);
-    }/**
-     * 获得全部库存
-     * @return
-     */
-    @RequestMapping(value = "showall")
-    public List showAll(HttpServletRequest request){
-        List<Map<String, Object>> list = warehouseService.showAll();
-        request.setAttribute("list",list);
-        for (Map<String,Object> map:list){
-            System.out.println(map);
-        }
-        return list;
-    }}
+        String string="map取值说明（commodityid商品id）（merchantid商家id）（unissue_inventorynum剩余库存）";
+        return new MyResponseRestful(HttpStatus.OK,"查询成功", list,string);
+    }
+}

@@ -16,6 +16,11 @@
     <!--@mbg.generated generated on Tue Aug 27 16:01:01 CST 2019.-->
     id, commodityid, salenum, locknum, saleednum, activitynum, presellnum, merchantid
   </sql>
+
+  <select id="showAll" resultType="map">
+    select commodityid, salenum, saleednum, activitynum, presellnum, merchantid from warehouse.saletable
+   </select>
+
   <update id="addActivityNum">
     update saletable set activitynum=activitynum+#{param3},salenum=salenum-#{param3}
     where  merchantid=#{param1} and commodityid=#{param2}
@@ -69,4 +74,24 @@
   <select id="selSaleTableByMerchantId" parameterType="int" resultType="map">
     select commodityid, salenum, merchantid from warehouse.saletable where merchantid=#{merchantid}
   </select>
+
+
+  <select id="getById" resultType="map">
+    SELECT commodityid,salenum,activitynum,merchantid from saletable WHERE commodityid=#{map.commodityid} AND merchantid=#{map.merchantid}
+   </select>
+
+  <update id="placeOrder">
+    <foreach collection="list" item="l" separator=";">
+      update warehouse.saletable set
+      <choose>
+        <when test="l.activitynum!=0">
+         activitynum=activitynum-#{l.num},locknum=locknum+#{l.num}
+        </when>
+        <otherwise>
+          salenum=salenum-#{l.num},locknum=locknum+#{l.num}
+        </otherwise>
+      </choose>
+      where commodityid=#{l.commodityid} and merchantid=#{l.merchantid}
+    </foreach>
+  </update>
 </mapper>

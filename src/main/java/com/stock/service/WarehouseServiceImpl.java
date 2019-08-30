@@ -29,15 +29,7 @@ public class WarehouseServiceImpl implements WarehouseService {
         return warehouseMapper.salesReturn(salesList);
     }
 
-    /**
-     * 获得全部库存
-     *
-     * @return
-     */
-    @Override
-    public List<Map<String, Object>> showAll() {
-        return warehouseMapper.showAll();
-    }
+
 
     @Override
     @Transactional

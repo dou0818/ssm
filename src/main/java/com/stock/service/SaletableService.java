@@ -2,10 +2,18 @@ package com.stock.service;
 
 import com.stock.domain.Saletable;
 
+
+
 import java.util.List;
 import java.util.Map;
 
 public interface SaletableService{
+
+    /**
+     * 获得全部库存
+     * @return
+     */
+    List<Map<String,Object>> showAll();
 
     /**
      * 根据用户id和商品id添加活动库存
@@ -41,4 +49,19 @@ public interface SaletableService{
    int cancelOrder(List<Map<String,Object>> orderid);
 
     List<Map<String, Object>> selSaleTableByMerchantId(int merchantid);
+
+    /**
+     * 根据商品id商家id返回可销售库存数据
+     * @param map
+     * @return
+     */
+    Map<String, Object> getById(Map<String, Object> map);
+
+    /**
+     * 下单成功，修改数量
+     *
+     * @param list
+     * @return
+     */
+    int placeOrder(List<Map<String, Object>> list);
 }

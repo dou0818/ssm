@@ -13,6 +13,17 @@ public class SaletableServiceImpl implements SaletableService{
 
     @Resource(name = "saletableMapper")
     private SaletableMapper saletableMapper;
+
+    /**
+     * 获得全部库存
+     *
+     * @return
+     */
+    @Override
+    public List<Map<String, Object>> showAll() {
+        return saletableMapper.showAll();
+    }
+
     /**
      * 根据用户id和商品id添加活动库存
      * @param merchanid
@@ -67,6 +78,21 @@ public class SaletableServiceImpl implements SaletableService{
     @Override
     public List<Map<String, Object>> selSaleTableByMerchantId(int merchantid) {
         return saletableMapper.selSaleTableByMerchantId(merchantid);
+    }
+
+    /**
+     * 根据商品id商家id返回可销售库存数据
+     * @param map
+     * @return
+     */
+    @Override
+    public Map<String, Object> getById(Map<String, Object> map) {
+        return saletableMapper.getById(map);
+    }
+
+    @Override
+    public int placeOrder(List<Map<String, Object>> list) {
+        return saletableMapper.placeOrder(list);
     }
 
 

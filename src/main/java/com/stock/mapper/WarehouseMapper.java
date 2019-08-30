@@ -37,8 +37,4 @@ public interface WarehouseMapper extends Mapper<Warehouse> {
      */
     List<Map<String,Object>> stockSearch();
 
-/**
-     * 获得全部库存
-     * @return
-     */
-    List<Map<String,Object>> showAll();}
+}
