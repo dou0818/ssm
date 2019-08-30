@@ -4,6 +4,7 @@ import com.stock.commons.MyResponseRestful;
 import com.stock.domain.Outwarehouse;
 import com.stock.domain.Warehouse;
 import com.stock.service.OutwarehouseService;
+import com.stock.service.SaletableService;
 import com.stock.service.WarehouseService;
 import com.stock.util.ArrayToListUtils;
 import org.springframework.http.HttpStatus;
@@ -25,6 +26,8 @@ public class WarehouseController {
     WarehouseService warehouseService;
 	@Resource(name="outwarehouseServiceImpl")
     OutwarehouseService outwarehouseService;
+	@Resource(name="saletableServiceImpl")
+	SaletableService saletableService;
 
  /**
      * 商品退货进行的操作接口
@@ -56,9 +59,10 @@ public class WarehouseController {
         List<Map<String, Object>> list = ArrayToListUtils.wareList(commodityids, merchantids, nums, warehouseids);
         int a = warehouseService.updateWareHouse(list);
         return new MyResponseRestful("操作成功", HttpStatus.OK);
+
     }
     /**
-     * 将仓库层的未发布库存部分库存添加到发布库存,在发布库存表里添加下相应的数据
+     * 将仓库层的未发布库存部分库存添加到发布库存,添加销售层可销售数量,在发布库存表里添加下相应的数据
      * @param commodityids
      * @param merchantids
      * @param nums
@@ -70,7 +74,7 @@ public class WarehouseController {
     public MyResponseRestful putsInStorage(int[] commodityids, int[] merchantids, int[] nums, int[] warehouseids) {
         List<Map<String,Object>> list=ArrayToListUtils.wareList(commodityids,merchantids,nums,warehouseids);
         warehouseService.updateInventorynumByWarehouse(list);
-
+        saletableService.updatesalenumBySaletable(list);
         List<Outwarehouse> outwarehousesList =new ArrayList<>();
 
         for (Map<String,Object> w : list) {

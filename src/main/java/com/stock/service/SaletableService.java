@@ -41,4 +41,11 @@ public interface SaletableService{
    int cancelOrder(List<Map<String,Object>> orderid);
 
     List<Map<String, Object>> selSaleTableByMerchantId(int merchantid);
+
+    /**
+     * 根据商品id和商家id修改可销售数量
+     * @param list
+     * @return
+     */
+    public int updatesalenumBySaletable(List<Map<String,Object>> list);
 }

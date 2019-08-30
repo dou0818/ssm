@@ -69,5 +69,15 @@ public class SaletableServiceImpl implements SaletableService{
         return saletableMapper.selSaleTableByMerchantId(merchantid);
     }
 
+    /**
+     * 根据商品id和商家id修改可销售数量
+     * @param list
+     * @return
+     */
+    @Override
+    public int updatesalenumBySaletable(List<Map<String, Object>> list) {
+        return saletableMapper.updatesalenumBySaletable(list);
+    }
+
 
 }

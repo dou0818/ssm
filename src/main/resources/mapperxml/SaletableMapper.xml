@@ -69,4 +69,16 @@
   <select id="selSaleTableByMerchantId" parameterType="int" resultType="map">
     select commodityid, salenum, merchantid from warehouse.saletable where merchantid=#{merchantid}
   </select>
+
+
+  <update id="updatesalenumBySaletable" parameterType="list">
+    <foreach separator=";" index="index" item="i" collection="list">
+      update saletable
+      <set>
+        salenum=(salenum+#{i.num,jdbcType=INTEGER})
+     </set>
+      where commodityid=#{i.commodityid,jdbcType=INTEGER} and merchantid=#{i.merchantid,jdbcType=INTEGER}
+    </foreach>
+  </update>
+
 </mapper>
