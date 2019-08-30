@@ -80,7 +80,7 @@ public class SaletableServiceImpl implements SaletableService{
         return saletableMapper.selSaleTableByMerchantId(merchantid);
     }
 
-    /**
+/**
      * 根据商品id商家id返回可销售库存数据
      * @param map
      * @return
@@ -95,5 +95,12 @@ public class SaletableServiceImpl implements SaletableService{
         return saletableMapper.placeOrder(list);
     }
 
-
-}
+	/**
+     * 根据商品id和商家id修改可销售数量
+     * @param list
+     * @return
+     */
+    @Override
+    public int updatesalenumBySaletable(List<Map<String, Object>> list) {
+        return saletableMapper.updatesalenumBySaletable(list);
+    }}

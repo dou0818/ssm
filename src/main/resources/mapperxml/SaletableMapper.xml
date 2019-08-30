@@ -74,9 +74,7 @@
   <select id="selSaleTableByMerchantId" parameterType="int" resultType="map">
     select commodityid, salenum, merchantid from warehouse.saletable where merchantid=#{merchantid}
   </select>
-
-
-  <select id="getById" resultType="map">
+<select id="getById" resultType="map">
     SELECT commodityid,salenum,activitynum,merchantid from saletable WHERE commodityid=#{map.commodityid} AND merchantid=#{map.merchantid}
    </select>
 
@@ -94,4 +92,13 @@
       where commodityid=#{l.commodityid} and merchantid=#{l.merchantid}
     </foreach>
   </update>
-</mapper>
+
+	<update id="updatesalenumBySaletable" parameterType="list">
+    <foreach separator=";" index="index" item="i" collection="list">
+      update saletable
+      <set>
+        salenum=(salenum+#{i.num,jdbcType=INTEGER})
+     </set>
+      where commodityid=#{i.commodityid,jdbcType=INTEGER} and merchantid=#{i.merchantid,jdbcType=INTEGER}
+    </foreach>
+  </update></mapper>

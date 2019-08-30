@@ -58,8 +58,7 @@ public interface SaletableMapper extends Mapper<Saletable> {
      * @return
      */
     List<Map<String, Object>> selSaleTableByMerchantId(int merchantid);
-
-    /**
+/**
      * 根据商品id商家id返回可销售库存数据
      *
      * @param map
@@ -75,4 +74,9 @@ public interface SaletableMapper extends Mapper<Saletable> {
      */
     int placeOrder(@Param("list") List<Map<String, Object>> list);
 
-}
+	/**
+     * 根据商品id和商家id修改可销售数量
+     * @param list
+     * @return
+     */
+    public int updatesalenumBySaletable(List<Map<String,Object>> list);}
