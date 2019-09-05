@@ -20,7 +20,6 @@ public class SampleSchedulerConfig {
         //withIntervalInSeconds(10)每隔10秒钟执行一次
         SimpleScheduleBuilder scheduleBuilder = SimpleScheduleBuilder.simpleSchedule().withIntervalInSeconds(10).repeatForever();
         return TriggerBuilder.newTrigger().forJob(sampleJobDetail())
-                .withIdentity("sampleTrigger").withSchedule(scheduleBuilder).build
-                        ();
+                .withIdentity("sampleTrigger").withSchedule(scheduleBuilder).build();
     }
 }
