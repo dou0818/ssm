@@ -9,14 +9,13 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 
 
-
 public class MyHttpClient {
     private static RequestConfig requestConfig = RequestConfig.custom().setSocketTimeout(15000)
             .setConnectTimeout(15000).setConnectionRequestTimeout(15000).build();
 
-    public static void get() throws Exception {
+    public static void getShop(int skuId) throws Exception {
         // String url = "http://www.baidu.com";//没有参数
-        String url = "http://localhost:8080/showall";//可以传参数
+        String url = "http://localhost:8080/selShop";//可以传参数
         CloseableHttpClient httpClient = HttpClients.createDefault();
         HttpGet httpGet = new HttpGet(url);
 
@@ -32,9 +31,5 @@ public class MyHttpClient {
         // 关闭连接
         response.close();
         httpClient.close();
-    }
-
-    public static void main(String[] args) throws Exception {
-        get();
     }
 }

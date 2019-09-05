@@ -1,7 +1,8 @@
 package com.stock.mapper;
 
 import com.stock.domain.Saletable;
-import tk.mybatis.mapper.common.Mapper;
+import org.apache.ibatis.annotations.Mapper;
 
-public interface SaletableMapper extends Mapper<Saletable> {
+@Mapper
+public interface SaletableMapper extends tk.mybatis.mapper.common.Mapper<Saletable> {
 }
