@@ -15,12 +15,12 @@ import java.util.Map;
 
 
 public class MyHttpClient {
+
     private static RequestConfig requestConfig = RequestConfig.custom().setSocketTimeout(15000)
             .setConnectTimeout(15000).setConnectionRequestTimeout(15000).build();
 
-    public static List<Map<String, Object>> getShop() throws Exception {
-        // String url = "http://www.baidu.com";//没有参数
-        String url = "http://192.168.1.44:8095/selAllStudent";//可以传参数
+    public static Map<String, Object> getShop(String url) throws Exception {
+        //可以传参数
         CloseableHttpClient httpClient = HttpClients.createDefault();
         HttpGet httpGet = new HttpGet(url);
         httpGet.setConfig(requestConfig);
@@ -30,14 +30,10 @@ public class MyHttpClient {
         String responseContent = EntityUtils.toString(entity, "UTF-8");
         System.out.println(responseContent);
         ObjectMapper om = new ObjectMapper();
-        List<Map<String,Object>> mapList=om.readValue(responseContent,new TypeReference<List<Map<String,Object>>>(){});
+        Map<String,Object> mapList=om.readValue(responseContent,new TypeReference<Map<String,Object>>(){});
         // 关闭连接
         response.close();
         httpClient.close();
         return mapList;
-    }
-
-    public static void main(String[] args) throws Exception {
-        getShop();
     }
 }
