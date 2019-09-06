@@ -36,10 +36,11 @@ public class SaletableController {
         int merchantId = 1;
         PageHelper.startPage(pageNum, page.getPagesize());
         List<Saletable> saletableList=saletableService.selSaleByMerchantId(merchantId);
-        Map<String,Object> mapList= MyHttpClient.getShop(url.getShopUrl());
+        String skuids="skuIds=";
         for (Saletable saletable:saletableList) {
-            saletable.getSkuId();
+             skuids+=saletable.getSkuId()+",";
         }
+        Map<String,Object> mapList= MyHttpClient.getShop(url.getShopUrl()+skuids.substring(0,skuids.length()-1));
         PageInfo<Saletable> userPageInfo = new PageInfo<>(saletableList);
         return userPageInfo;
     }
