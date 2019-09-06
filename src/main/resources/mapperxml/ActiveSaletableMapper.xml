@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.stock.mapper.ActiveSaletableMapper">
+  <resultMap id="BaseResultMap" type="com.stock.domain.ActiveSaletable">
+    <!--@mbg.generated generated on Fri Sep 06 14:53:30 CST 2019.-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="active_id" jdbcType="INTEGER" property="activeId" />
+    <result column="saletable_id" jdbcType="INTEGER" property="saletableId" />
+    <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
+    <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated generated on Fri Sep 06 14:53:30 CST 2019.-->
+    id, active_id, saletable_id, start_time, end_time
+  </sql>
+</mapper>

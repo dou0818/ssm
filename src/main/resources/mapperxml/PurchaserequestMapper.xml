@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.stock.mapper.PurchaserequestMapper">
+  <resultMap id="BaseResultMap" type="com.stock.domain.Purchaserequest">
+    <!--@mbg.generated generated on Fri Sep 06 14:53:30 CST 2019.-->
+    <id column="pr_id" jdbcType="INTEGER" property="prId" />
+    <result column="proposerid" jdbcType="INTEGER" property="proposerid" />
+    <result column="proposetime" jdbcType="TIMESTAMP" property="proposetime" />
+    <result column="approvaltime" jdbcType="TIMESTAMP" property="approvaltime" />
+    <result column="pr_state" jdbcType="VARCHAR" property="prState" />
+    <result column="verifierid" jdbcType="INTEGER" property="verifierid" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated generated on Fri Sep 06 14:53:30 CST 2019.-->
+    pr_id, proposerid, proposetime, approvaltime, pr_state, verifierid
+  </sql>
+</mapper>
