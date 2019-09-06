@@ -2,6 +2,7 @@ package com.stock.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.stock.commons.MyHttpClient;
 import com.stock.commons.Page;
 import com.stock.domain.Saletable;
 import com.stock.service.SaletableService;
@@ -12,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class SaletableController {
@@ -21,12 +23,13 @@ public class SaletableController {
     Page page;
     @RequestMapping("selSale")
     @ResponseBody
-    public PageInfo selSale(int pageNum){
+    public PageInfo selSale(int pageNum) throws Exception {
         int merchantId = 1;
         PageHelper.startPage(pageNum, page.getPagesize());
         List<Saletable> saletableList=saletableService.selSaleByMerchantId(merchantId);
+        List<Map<String,Object>> mapList= MyHttpClient.getShop();
         for (Saletable saletable:saletableList) {
-            saletable.getSkuId();
+
         }
         PageInfo<Saletable> userPageInfo = new PageInfo<>(saletableList);
         return userPageInfo;
