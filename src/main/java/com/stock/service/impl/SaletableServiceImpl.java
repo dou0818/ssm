@@ -1,21 +1,21 @@
 package com.stock.service.impl;
 
+import com.stock.domain.Saletable;
+import com.stock.mapper.SaletableMapper;
+import com.stock.service.SaletableService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
 import java.util.Map;
 
-
-import java.util.List;
-
 @Service
-public class SaletableServiceImpl implements SaletableService{
+public class SaletableServiceImpl implements SaletableService {
 
     @Resource
-    private SaletableMapper saletableMapper;
+    SaletableMapper saletableMapper;
 
- @Override
+    @Override
     public List<Saletable> selSaleByMerchantId(int merchantId) {
         Saletable saletable=new Saletable();
         saletable.setMerchantId(merchantId);

@@ -5,8 +5,9 @@ import tk.mybatis.mapper.common.Mapper;
 
 import java.util.List;
 import java.util.Map;
-
+@org.apache.ibatis.annotations.Mapper
 public interface SaletableMapper extends Mapper<Saletable> {
+
     /**
      * 付款后锁定库存-，已销售库存+
      * @param payorder
