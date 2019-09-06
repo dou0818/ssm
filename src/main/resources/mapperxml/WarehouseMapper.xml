@@ -18,4 +18,7 @@
     id, sku_id, warehouse_id, unissue_num, unable_num, lock_num, merchant_id, went_num, 
     suggest_price
   </sql>
+    <select id="selectWareHouseAll" resultType="map">
+      select sku_id,unissue_num, suggest_price from warehouse.warehouse where warehouse_id=#{merchantid}
+    </select>
 </mapper>
