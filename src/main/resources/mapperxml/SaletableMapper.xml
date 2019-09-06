@@ -1,20 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.stock.mapper.SaletableMapper">
-  <resultMap id="BaseResultMap" type="com.stock.domain.Saletable">
-    <!--@mbg.generated generated on Wed Sep 04 14:14:23 CST 2019.-->
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="sku_id" jdbcType="INTEGER" property="skuId" />
-    <result column="sale_num" jdbcType="INTEGER" property="saleNum" />
-    <result column="lock_num" jdbcType="INTEGER" property="lockNum" />
-    <result column="saleed_num" jdbcType="INTEGER" property="saleedNum" />
-    <result column="merchant_id" jdbcType="INTEGER" property="merchantId" />
-    <result column="active_id" jdbcType="VARCHAR" property="activeId" />
-    <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
-    <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    <!--@mbg.generated generated on Wed Sep 04 14:14:23 CST 2019.-->
-    id, sku_id, sale_num, lock_num, saleed_num, merchant_id, active_id, start_time, end_time
-  </sql>
+    <resultMap id="BaseResultMap" type="com.stock.domain.Saletable">
+        <!--@mbg.generated generated on Wed Sep 04 14:14:23 CST 2019.-->
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="sku_id" jdbcType="INTEGER" property="skuId"/>
+        <result column="sale_num" jdbcType="INTEGER" property="saleNum"/>
+        <result column="lock_num" jdbcType="INTEGER" property="lockNum"/>
+        <result column="saleed_num" jdbcType="INTEGER" property="saleedNum"/>
+        <result column="merchant_id" jdbcType="INTEGER" property="merchantId"/>
+        <result column="active_id" jdbcType="VARCHAR" property="activeId"/>
+        <result column="start_time" jdbcType="TIMESTAMP" property="startTime"/>
+        <result column="end_time" jdbcType="TIMESTAMP" property="endTime"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated generated on Wed Sep 04 14:14:23 CST 2019.-->
+        id, sku_id, sale_num, lock_num, saleed_num, merchant_id, active_id, start_time, end_time
+    </sql>
+
+    <!--  付款成功后，修改锁定库存-，已销售库存+-->
+    <update id="payment" parameterType="java.util.List">
+        <!-- 接收list参数，循环着组装sql语句，注意for循环的写法
+                separator=";" 代表着每次循环完，在sql后面放一个分号
+                item="params" 循环List的每条的结果集
+                collection="list" list 即为 map传过来的参数key -->
+        <foreach collection="list" separator=";" item="params">
+            update saletable set
+            lock_num=lock_num-#{params.num},
+            saleed_num=saleed_num+#{params.num}
+            WHERE sku_id=#{params.sku_id} and merchant_id=#{params.merchant_id}
+        </foreach>
+    </update>
+
+    <!--取消订单 已销售库存-，可销售库存+  -->
+    <update id="cancelOrder" parameterType="java.util.List">
+        <!-- 接收list参数，循环着组装sql语句，注意for循环的写法
+                separator=";" 代表着每次循环完，在sql后面放一个分号
+                item="params" 循环List的每条的结果集
+                collection="list" list 即为 map传过来的参数key -->
+        <foreach collection="list" separator=";" item="params">
+            update saletable set
+            sale_num=sale_num+#{params.num},
+            lock_num=lock_num-#{params.num}
+            WHERE sku_id=#{params.sku_id} and merchant_id=#{params.merchant_id}
+        </foreach>
+    </update>
+
+
 </mapper>
