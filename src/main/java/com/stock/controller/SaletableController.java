@@ -51,22 +51,17 @@ public class SaletableController {
         }
         return false;
     }
-
-	 /**
-     * ¸¶¿îºóËø¶¨¿â´æ-£¬ÒÑÏúÊÛ¿â´æ+
-     * @return
-     */
     @RequestMapping("/payment")
     public MyResponseRestful payment(int[] commodityids, int[] merchantids, int[] nums){
         List<Map<String,Object>> list= ArrayToListUtils.saleList(commodityids, merchantids, nums);
         saletableService.payment(list);
-        return new MyResponseRestful("²Ù×÷³É¹¦", HttpStatus.OK);
+        return new MyResponseRestful("ï¿½ï¿½ï¿½ï¿½ï¿½É¹ï¿½", HttpStatus.OK);
     }
 
     @RequestMapping("/cancelorder")
     public MyResponseRestful cancelOrder(int[] commodityids, int[] merchantids, int[] nums){
         List<Map<String,Object>> list=ArrayToListUtils.saleList(commodityids,merchantids,nums);
         int a=saletableService.cancelOrder(list);
-        return new MyResponseRestful("²Ù×÷³É¹¦", HttpStatus.OK);
+        return new MyResponseRestful("ï¿½ï¿½ï¿½ï¿½ï¿½É¹ï¿½", HttpStatus.OK);
     }
 }

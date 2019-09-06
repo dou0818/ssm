@@ -16,12 +16,9 @@
     <!--@mbg.generated generated on Fri Sep 06 14:53:30 CST 2019.-->
     id, sku_id, sale_num, lock_num, saleed_num, merchant_id, sold_out, put_price
   </sql>
- <!--  付款成功后，修改锁定库存-，已销售库存+-->
+
     <update id="payment" parameterType="java.util.List">
-        <!-- 接收list参数，循环着组装sql语句，注意for循环的写法
-                separator=";" 代表着每次循环完，在sql后面放一个分号
-                item="params" 循环List的每条的结果集
-                collection="list" list 即为 map传过来的参数key -->
+
         <foreach collection="list" separator=";" item="params">
             update saletable set
             lock_num=lock_num-#{params.num},
@@ -30,16 +27,14 @@
         </foreach>
     </update>
 
-    <!--取消订单 已销售库存-，可销售库存+  -->
+
     <update id="cancelOrder" parameterType="java.util.List">
-        <!-- 接收list参数，循环着组装sql语句，注意for循环的写法
-                separator=";" 代表着每次循环完，在sql后面放一个分号
-                item="params" 循环List的每条的结果集
-                collection="list" list 即为 map传过来的参数key -->
+
         <foreach collection="list" separator=";" item="params">
             update saletable set
             sale_num=sale_num+#{params.num},
             lock_num=lock_num-#{params.num}
             WHERE sku_id=#{params.sku_id} and merchant_id=#{params.merchant_id}
         </foreach>
-    </update></mapper>
+    </update>
+</mapper>
