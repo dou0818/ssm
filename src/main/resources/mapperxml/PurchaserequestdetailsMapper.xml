@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.stock.mapper.PurchaserequestdetailsMapper">
+  <resultMap id="BaseResultMap" type="com.stock.domain.Purchaserequestdetails">
+    <!--@mbg.generated generated on Fri Sep 06 14:53:30 CST 2019.-->
+    <id column="prd_id" jdbcType="INTEGER" property="prdId" />
+    <result column="pr_id" jdbcType="INTEGER" property="prId" />
+    <result column="sku_id" jdbcType="INTEGER" property="skuId" />
+    <result column="purchase_num" jdbcType="INTEGER" property="purchaseNum" />
+    <result column="merchant_id" jdbcType="INTEGER" property="merchantId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated generated on Fri Sep 06 14:53:30 CST 2019.-->
+    prd_id, pr_id, sku_id, purchase_num, merchant_id
+  </sql>
+</mapper>

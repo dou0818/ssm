@@ -1,6 +1,6 @@
 package com.stock.domain;
 
-import java.util.Date;
+import java.math.BigDecimal;
 import javax.persistence.*;
 
 @Table(name = "saletable")
@@ -44,22 +44,16 @@ public class Saletable {
     private Integer merchantId;
 
     /**
-     * 活动id
+     * 0为准备下架 1为已上架商品
      */
-    @Column(name = "active_id")
-    private String activeId;
+    @Column(name = "sold_out")
+    private Integer soldOut;
 
     /**
-     * 活动开始时间
+     * 上架价格
      */
-    @Column(name = "start_time")
-    private Date startTime;
-
-    /**
-     * 活动结束时间
-     */
-    @Column(name = "end_time")
-    private Date endTime;
+    @Column(name = "put_price")
+    private BigDecimal putPrice;
 
     /**
      * 获取发布库存表id
@@ -170,56 +164,38 @@ public class Saletable {
     }
 
     /**
-     * 获取活动id
+     * 获取0为准备下架 1为已上架商品
      *
-     * @return active_id - 活动id
+     * @return sold_out - 0为准备下架 1为已上架商品
      */
-    public String getActiveId() {
-        return activeId;
+    public Integer getSoldOut() {
+        return soldOut;
     }
 
     /**
-     * 设置活动id
+     * 设置0为准备下架 1为已上架商品
      *
-     * @param activeId 活动id
+     * @param soldOut 0为准备下架 1为已上架商品
      */
-    public void setActiveId(String activeId) {
-        this.activeId = activeId;
+    public void setSoldOut(Integer soldOut) {
+        this.soldOut = soldOut;
     }
 
     /**
-     * 获取活动开始时间
+     * 获取上架价格
      *
-     * @return start_time - 活动开始时间
+     * @return put_price - 上架价格
      */
-    public Date getStartTime() {
-        return startTime;
+    public BigDecimal getPutPrice() {
+        return putPrice;
     }
 
     /**
-     * 设置活动开始时间
+     * 设置上架价格
      *
-     * @param startTime 活动开始时间
+     * @param putPrice 上架价格
      */
-    public void setStartTime(Date startTime) {
-        this.startTime = startTime;
-    }
-
-    /**
-     * 获取活动结束时间
-     *
-     * @return end_time - 活动结束时间
-     */
-    public Date getEndTime() {
-        return endTime;
-    }
-
-    /**
-     * 设置活动结束时间
-     *
-     * @param endTime 活动结束时间
-     */
-    public void setEndTime(Date endTime) {
-        this.endTime = endTime;
+    public void setPutPrice(BigDecimal putPrice) {
+        this.putPrice = putPrice;
     }
 }

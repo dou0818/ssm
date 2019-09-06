@@ -1,5 +1,6 @@
 package com.stock.domain;
 
+import java.math.BigDecimal;
 import javax.persistence.*;
 
 @Table(name = "warehouse")
@@ -53,6 +54,12 @@ public class Warehouse {
      */
     @Column(name = "went_num")
     private Integer wentNum;
+
+    /**
+     * 建议零售价
+     */
+    @Column(name = "suggest_price")
+    private BigDecimal suggestPrice;
 
     /**
      * 获取仓库层表id
@@ -196,5 +203,23 @@ public class Warehouse {
      */
     public void setWentNum(Integer wentNum) {
         this.wentNum = wentNum;
+    }
+
+    /**
+     * 获取建议零售价
+     *
+     * @return suggest_price - 建议零售价
+     */
+    public BigDecimal getSuggestPrice() {
+        return suggestPrice;
+    }
+
+    /**
+     * 设置建议零售价
+     *
+     * @param suggestPrice 建议零售价
+     */
+    public void setSuggestPrice(BigDecimal suggestPrice) {
+        this.suggestPrice = suggestPrice;
     }
 }
