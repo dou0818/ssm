@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.stock.mapper.InventorySchedulingMapper">
+  <resultMap id="BaseResultMap" type="com.stock.domain.InventoryScheduling">
+    <!--@mbg.generated generated on Fri Sep 06 14:53:30 CST 2019.-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="sku_id" jdbcType="INTEGER" property="skuId" />
+    <result column="merchant_id" jdbcType="INTEGER" property="merchantId" />
+    <result column="num" jdbcType="INTEGER" property="num" />
+    <result column="out_warehouse_id" jdbcType="INTEGER" property="outWarehouseId" />
+    <result column="in_warehouse_id" jdbcType="INTEGER" property="inWarehouseId" />
+    <result column="statement" jdbcType="VARCHAR" property="statement" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated generated on Fri Sep 06 14:53:30 CST 2019.-->
+    id, sku_id, merchant_id, num, out_warehouse_id, in_warehouse_id, `statement`
+  </sql>
+</mapper>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.stock.mapper.SaletableMapper">
+  <resultMap id="BaseResultMap" type="com.stock.domain.Saletable">
+    <!--@mbg.generated generated on Fri Sep 06 14:53:30 CST 2019.-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="sku_id" jdbcType="INTEGER" property="skuId" />
+    <result column="sale_num" jdbcType="INTEGER" property="saleNum" />
+    <result column="lock_num" jdbcType="INTEGER" property="lockNum" />
+    <result column="saleed_num" jdbcType="INTEGER" property="saleedNum" />
+    <result column="merchant_id" jdbcType="INTEGER" property="merchantId" />
+    <result column="sold_out" jdbcType="INTEGER" property="soldOut" />
+    <result column="put_price" jdbcType="DECIMAL" property="putPrice" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated generated on Fri Sep 06 14:53:30 CST 2019.-->
+    id, sku_id, sale_num, lock_num, saleed_num, merchant_id, sold_out, put_price
+  </sql>
+</mapper>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.stock.mapper.WarehouseMapper">
+  <resultMap id="BaseResultMap" type="com.stock.domain.Warehouse">
+    <!--@mbg.generated generated on Fri Sep 06 14:53:30 CST 2019.-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="sku_id" jdbcType="INTEGER" property="skuId" />
+    <result column="warehouse_id" jdbcType="INTEGER" property="warehouseId" />
+    <result column="unissue_num" jdbcType="INTEGER" property="unissueNum" />
+    <result column="unable_num" jdbcType="INTEGER" property="unableNum" />
+    <result column="lock_num" jdbcType="INTEGER" property="lockNum" />
+    <result column="merchant_id" jdbcType="INTEGER" property="merchantId" />
+    <result column="went_num" jdbcType="INTEGER" property="wentNum" />
+    <result column="suggest_price" jdbcType="DECIMAL" property="suggestPrice" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated generated on Fri Sep 06 14:53:30 CST 2019.-->
+    id, sku_id, warehouse_id, unissue_num, unable_num, lock_num, merchant_id, went_num, 
+    suggest_price
+  </sql>
+</mapper>
