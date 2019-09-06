@@ -1,20 +1,19 @@
 package com.stock.service;
 
-import java.util.List;
+import com.stock.domain.Saletable;
 import java.util.Map;
-
-public interface SaletableService{
+import java.util.List;public interface SaletableService{
     /**
-     * ä»˜æ¬¾åé”å®šåº“å­˜-ï¼Œå·²é”€å”®åº“å­˜+
+     * ¸¶¿îºóËø¶¨¿â´æ-£¬ÒÑÏúÊÛ¿â´æ+
      * @param payorder
      * @return
      */
     int payment(List<Map<String,Object>> payorder);
 
-    /**
-     * å–æ¶ˆè®¢å• å·²é”€å”®åº“å­˜-ï¼Œå¯é”€å”®åº“å­˜+
+/**
+     * È¡Ïû¶©µ¥ ÒÑÏúÊÛ¿â´æ-£¬¿ÉÏúÊÛ¿â´æ+
      * @param cancel
      * @return
      */
-    int cancelOrder(List<Map<String,Object>> cancel);
+    int cancelOrder(List<Map<String,Object>> cancel);    int addSale(Saletable saletable);
 }

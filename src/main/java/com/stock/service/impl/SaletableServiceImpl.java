@@ -1,12 +1,13 @@
 package com.stock.service.impl;
 
-import com.stock.mapper.SaletableMapper;
-import com.stock.service.SaletableService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
 import java.util.Map;
+
+
+import java.util.List;
 
 @Service
 public class SaletableServiceImpl implements SaletableService{
@@ -14,8 +15,18 @@ public class SaletableServiceImpl implements SaletableService{
     @Resource
     private SaletableMapper saletableMapper;
 
-    /**
-     * ä»˜æ¬¾åé”å®šåº“å­˜-ï¼Œå·²é”€å”®åº“å­˜+
+ @Override
+    public List<Saletable> selSaleByMerchantId(int merchantId) {
+        Saletable saletable=new Saletable();
+        saletable.setMerchantId(merchantId);
+        return saletableMapper.select(saletable);
+    }
+
+    @Override
+    public int addSale(Saletable saletable) {
+        return saletableMapper.insert(saletable);
+    } /**
+     * ¸¶¿îºóËø¶¨¿â´æ-£¬ÒÑÏúÊÛ¿â´æ+
      *
      * @param payorder
      * @return
@@ -26,7 +37,7 @@ public class SaletableServiceImpl implements SaletableService{
     }
 
     /**
-     * å–æ¶ˆè®¢å• å·²é”€å”®åº“å­˜-ï¼Œå¯é”€å”®åº“å­˜+
+     * È¡Ïû¶©µ¥ ÒÑÏúÊÛ¿â´æ-£¬¿ÉÏúÊÛ¿â´æ+
      *
      * @param cancel
      * @return
@@ -34,5 +45,4 @@ public class SaletableServiceImpl implements SaletableService{
     @Override
     public int cancelOrder(List<Map<String, Object>> cancel) {
         return saletableMapper.cancelOrder(cancel);
-    }
-}
+    }}

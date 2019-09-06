@@ -1,21 +1,19 @@
 package com.stock.mapper;
 
 import com.stock.domain.Saletable;
-import tk.mybatis.mapper.common.Mapper;
-
+import org.apache.ibatis.annotations.Mapper;
 import java.util.List;
 import java.util.Map;
 
-public interface SaletableMapper extends Mapper<Saletable> {
     /**
-     * ä»˜æ¬¾åé”å®šåº“å­˜-ï¼Œå·²é”€å”®åº“å­˜+
+     * ¸¶¿îºóËø¶¨¿â´æ-£¬ÒÑÏúÊÛ¿â´æ+
      * @param payorder
      * @return
      */
     int payment(List<Map<String,Object>> payorder);
 
     /**
-     * å–æ¶ˆè®¢å• å·²é”€å”®åº“å­˜-ï¼Œå¯é”€å”®åº“å­˜+
+     * È¡Ïû¶©µ¥ ÒÑÏúÊÛ¿â´æ-£¬¿ÉÏúÊÛ¿â´æ+
      * @param cancel
      * @return
      */
