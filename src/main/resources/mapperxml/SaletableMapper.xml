@@ -16,4 +16,37 @@
     <!--@mbg.generated generated on Fri Sep 06 14:53:30 CST 2019.-->
     id, sku_id, sale_num, lock_num, saleed_num, merchant_id, sold_out, put_price
   </sql>
+
+   <!--商家下架修改商品上下架属性为下架-->
+  <update id="updatesoldOutById" parameterType="int">
+    <foreach collection="array" item="item" separator=";" >
+      update saletable
+      <set>
+        sold_out=0
+      </set>
+      where sku_id=#{item}
+    </foreach>
+<!--根据商品id查询数据-->
+  </update>
+  <select id="selectByskuIds" resultMap="BaseResultMap">
+    select  id, sku_id, sale_num, lock_num, saleed_num, merchant_id, sold_out, put_price
+    from saletable where  sku_id in
+    <foreach collection="array" item="item" separator="," open="(" close=")">
+    #{item}
+  </foreach>
+  </select>
+
+  <!--根据商品id删除-->
+  <delete id="deleteByskuId">
+    delete from  saletable where sku_id in
+    <foreach collection="array" item="item" separator="," open="(" close=")">
+      #{item}
+    </foreach>
+  </delete>
+
+ <!-- 查询所有上架商品属性为1的数据-->
+  <select id="selectBysoldOut1" resultType="map">
+    select  id, sku_id, sale_num, lock_num, saleed_num, merchant_id, sold_out, put_price
+    from saletable where sold_out=1
+  </select>
 </mapper>
