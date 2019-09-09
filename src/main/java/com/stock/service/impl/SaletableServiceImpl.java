@@ -1,22 +1,25 @@
 package com.stock.service.impl;
 
-import org.springframework.stereotype.Service;
-import javax.annotation.Resource;
+import com.stock.domain.Saletable;
 import com.stock.mapper.SaletableMapper;
 import com.stock.service.SaletableService;
+import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 import java.util.Map;
 
+
 @Service
-public class SaletableServiceImpl implements SaletableService{
+public class SaletableServiceImpl implements SaletableService {
 
     @Resource
-    private SaletableMapper saletableMapper;
+    SaletableMapper saletableMapper;
 
     /**
-     * å•†å®¶ä¸‹æ¶ä¿®æ”¹å•†å“ä¸Šä¸‹æ¶å±æ€§ä¸ºä¸‹æ¶
-     * @param skuIds ä¸Šä¸‹æ¶å±æ€§æ•°ç»„
+     * ÉÌ¼ÒÏÂ¼ÜĞŞ¸ÄÉÌÆ·ÉÏÏÂ¼ÜÊôĞÔÎªÏÂ¼Ü
+     *
+     * @param skuIds ÉÏÏÂ¼ÜÊôĞÔÊı×é
      * @return
      */
     @Override
@@ -25,16 +28,40 @@ public class SaletableServiceImpl implements SaletableService{
     }
 
     /**
-     * æŸ¥è¯¢æ‰€æœ‰ä¸Šæ¶å•†å“å±æ€§ä¸º1çš„æ•°æ®æ˜¾ç¤ºåˆ°é¡µé¢,ä¿¡æ¯åŒ…æ‹¬å•†å“åç§°
+     * ²éÑ¯ËùÓĞÉÏ¼ÜÉÌÆ·ÊôĞÔÎª1µÄÊı¾İÏÔÊ¾µ½Ò³Ãæ,ĞÅÏ¢°üÀ¨ÉÌÆ·Ãû³Æ
+     *
      * @param skuIds
      * @return
      */
     @Override
-    public List<Map<String,Object>> selectBysoldOut1(int skuIds[]){
-        List<Map<String,Object>> list=saletableMapper.selectBysoldOut1(skuIds);
+    public List<Map<String, Object>> selectBysoldOut1(int skuIds[]) {
+        List<Map<String, Object>> list = saletableMapper.selectBysoldOut1(skuIds);
         for (Map<String, Object> map : list) {
 
         }
         return list;
     }
+
+    @Override
+    public List<Saletable> selSaleByMerchantId(int merchantId) {
+        Saletable saletable = new Saletable();
+        saletable.setMerchantId(merchantId);
+        return saletableMapper.select(saletable);
+    }
+
+    @Override
+    public int addSale(Saletable saletable) {
+        return saletableMapper.insert(saletable);
+    }
+
+    @Override
+    public int payment(List<Map<String, Object>> payorder) {
+        return saletableMapper.payment(payorder);
+    }
+
+    @Override
+    public int cancelOrder(List<Map<String, Object>> cancel) {
+        return saletableMapper.cancelOrder(cancel);
+    }
+
 }

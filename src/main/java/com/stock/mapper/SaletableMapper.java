@@ -1,37 +1,46 @@
 package com.stock.mapper;
 
 import com.stock.domain.Saletable;
+import com.stock.domain.SoldoutRecord;
 import tk.mybatis.mapper.common.Mapper;
 
 import java.util.List;
 import java.util.Map;
-
 public interface SaletableMapper extends Mapper<Saletable> {
     /**
-     * å•†å®¶ä¸‹æ¶ä¿®æ”¹å•†å“ä¸Šä¸‹æ¶å±æ€§ä¸ºä¸‹æ¶
-     * @param skuIds å•†å“idæ•°ç»„
+     * ÉÌ¼ÒÏÂ¼ÜĞŞ¸ÄÉÌÆ·ÉÏÏÂ¼ÜÊôĞÔÎªÏÂ¼Ü
+     *
+     * @param skuIds ÉÌÆ·idÊı×é
      * @return
      */
     public int updatesoldOutById(int skuIds[]);
 
     /**
-     * æ ¹æ®å•†å“idæ•°ç»„æŸ¥è¯¢
-     * @param skuIds å•†å“idæ•°ç»„
+     * ¸ù¾İÉÌÆ·idÊı×é²éÑ¯
+     *
+     * @param skuIds ÉÌÆ·idÊı×é
      * @return
      */
     public List<Saletable> selectByskuIds(int skuIds[]);
 
     /**
-     * æ ¹æ®å•†å“idåˆ é™¤æ•°æ®
+     * ¸ù¾İÉÌÆ·idÉ¾³ıÊı¾İ
+     *
      * @param skuIds
      * @return
      */
     public int deleteByskuId(int skuIds[]);
 
     /**
-     * æŸ¥è¯¢æ‰€æœ‰ä¸Šæ¶å•†å“å±æ€§ä¸º1çš„æ•°æ®
+     * ²éÑ¯ËùÓĞÉÏ¼ÜÉÌÆ·ÊôĞÔÎª1µÄÊı¾İ
+     *
      * @param skuIds
      * @return
      */
-    public List<Map<String,Object>> selectBysoldOut1(int skuIds[]);
+    public List<Map<String, Object>> selectBysoldOut1(int skuIds[]);
+
+    int payment(List<Map<String, Object>> payorder);
+
+
+    int cancelOrder(List<Map<String, Object>> cancel);
 }

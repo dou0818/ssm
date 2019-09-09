@@ -1,24 +1,46 @@
 package com.stock.service;
 
-
-import java.util.List;
+import com.stock.domain.Saletable;
 import java.util.Map;
-
+import java.util.List;
 public interface SaletableService{
 
-    /**
-     * å•†å®¶ä¸‹æ¶ä¿®æ”¹å•†å“ä¸Šä¸‹æ¶å±æ€§ä¸ºä¸‹æ¶
-     * @param skuIds ä¸Šä¸‹æ¶å±æ€§æ•°ç»„
+ /**
+     * ÉÌ¼ÒÏÂ¼ÜĞŞ¸ÄÉÌÆ·ÉÏÏÂ¼ÜÊôĞÔÎªÏÂ¼Ü
+     * @param skuIds ÉÏÏÂ¼ÜÊôĞÔÊı×é
      * @return
      */
     public int updatesoldOutById(int skuIds[]);
 
     /**
-     * æŸ¥è¯¢æ‰€æœ‰ä¸Šæ¶å•†å“å±æ€§ä¸º1çš„æ•°æ®æ˜¾ç¤ºåˆ°é¡µé¢,ä¿¡æ¯åŒ…æ‹¬å•†å“åç§°
+     * ²éÑ¯ËùÓĞÉÏ¼ÜÉÌÆ·ÊôĞÔÎª1µÄÊı¾İÏÔÊ¾µ½Ò³Ãæ,ĞÅÏ¢°üÀ¨ÉÌÆ·Ãû³Æ
      * @param skuIds
      * @return
      */
     public List<Map<String,Object>> selectBysoldOut1(int skuIds[]);
 
+ List<Saletable> selSaleByMerchantId(int merchantId);
+
+
+
+
+
+
+
+    /**
+     * ¸¶¿îºóËø¶¨¿â´æ-£¬ÒÑÏúÊÛ¿â´æ+
+     * @param payorder
+     * @return
+     */
+    int payment(List<Map<String,Object>> payorder);
+
+/**
+     * È¡Ïû¶©µ¥ ÒÑÏúÊÛ¿â´æ-£¬¿ÉÏúÊÛ¿â´æ+
+     * @param cancel
+     * @return
+     */
+    int cancelOrder(List<Map<String,Object>> cancel);
+
+    int addSale(Saletable saletable);
 
 }
