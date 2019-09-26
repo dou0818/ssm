@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.stock.mapper.SaletableMapper">
-  <resultMap id="BaseResultMap" type="com.stock.domain.Saletable">
+   <resultMap id="BaseResultMap" type="com.stock.domain.Saletable">
     <!--@mbg.generated generated on Fri Sep 06 14:53:30 CST 2019.-->
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="sku_id" jdbcType="INTEGER" property="skuId" />
@@ -16,4 +16,25 @@
     <!--@mbg.generated generated on Fri Sep 06 14:53:30 CST 2019.-->
     id, sku_id, sale_num, lock_num, saleed_num, merchant_id, sold_out, put_price
   </sql>
+
+    <update id="payment" parameterType="java.util.List">
+
+        <foreach collection="list" separator=";" item="params">
+            update saletable set
+            lock_num=lock_num-#{params.num},
+            saleed_num=saleed_num+#{params.num}
+            WHERE sku_id=#{params.sku_id} and merchant_id=#{params.merchant_id}
+        </foreach>
+    </update>
+
+
+    <update id="cancelOrder" parameterType="java.util.List">
+
+        <foreach collection="list" separator=";" item="params">
+            update saletable set
+            sale_num=sale_num+#{params.num},
+            lock_num=lock_num-#{params.num}
+            WHERE sku_id=#{params.sku_id} and merchant_id=#{params.merchant_id}
+        </foreach>
+    </update>
 </mapper>
