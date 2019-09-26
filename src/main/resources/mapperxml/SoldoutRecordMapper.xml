@@ -13,4 +13,14 @@
     <!--@mbg.generated generated on Fri Sep 06 14:53:30 CST 2019.-->
     id, sku_id, merchant_id, saleed_num, soldout_time
   </sql>
+  <insert id="insertSaletableServices">
+    insert into soldout_record(sku_id,merchant_id,saleed_num,soldout_time)
+    values
+    <foreach collection="list" separator="," item="item">
+      (#{item.skuId,jdbcType=INTEGER} ,#{item.merchantId,jdbcType=INTEGER} ,
+      #{item.saleedNum,jdbcType=INTEGER} ,#{item.soldoutTime,jdbcType=TIMESTAMP} )
+    </foreach>
+  </insert>
+
+
 </mapper>
